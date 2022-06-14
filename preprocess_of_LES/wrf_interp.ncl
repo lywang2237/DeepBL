@@ -64,51 +64,51 @@ do hid = 14,23
         qv_hf = addfile(output_path+"qv_"+hid+":"+mid+"0:00_intrp.nc","c")
         sgs_tend_hf = addfile(output_path+"sgs_tend_"+hid+":"+mid+"0:00_intrp.nc","c")
         qc_hf = addfile(output_path+"qc_"+hid+":"+mid+"0:00_intrp.nc","c")
-	
-    ; interpolation of variables on full levels or half levels
-    do level = 0,nz-1
-        h = intrp_h(level)  ; use intrp_h or intrp_hh for different variables as mentioned before
-        u_h = wrf_user_intrp3d(u,z,"h",h,0.,False)
-        v_h = wrf_user_intrp3d(v,z,"h",h,0.,False)
-        w_h = wrf_user_intrp3d(w,z,"h",h,0.,False)
-        u_output(level,:,:) = u_h(:,:)
-        v_output(level,:,:) = v_h(:,:)
-        w_output(level,:,:) = w_h(:,:)
-        u_tend_h = wrf_user_intrp3d(u_tend,z,"h",h,0.,False)
-        v_tend_h = wrf_user_intrp3d(v_tend,z,"h",h,0.,False)
-        th_tend_h = wrf_user_intrp3d(th_tend,z,"h",h,0.,False)
-        qv_tend_h = wrf_user_intrp3d(qv_tend,z,"h",h,0.,False)
-        u_tend_output(level,:,:) = u_tend_h(:,:)
-        v_tend_output(level,:,:) = v_tend_h(:,:)
-        th_tend_output(level,:,:) = th_tend_h(:,:)
-        qv_tend_output(level,:,:) = qv_tend_h(:,:)
-        th_h = wrf_user_intrp3d(th,z,"h",h,0.,False)
-        th_output(level,:,:) = th_h(:,:)
-        qv_h = wrf_user_intrp3d(qv,z,"h",h,0.,False)
-        qv_output(level,:,:) = qv_h(:,:)
-        qc_h = wrf_user_intrp3d(qc,z,"h",h,0.,False)
-        qc_output(level,:,:) = qc_h(:,:)
-    end do
 
-    ; write the interpolated file to the hard disk
-    u_hf->u = u_output
-    v_hf->v = v_output
-    w_hf->w = w_output
-    u_tend_hf->u_tend = u_tend_output
-    v_tend_hf->v_tend = v_tend_output
-    th_hf->th = th_output
-    qv_hf->qv = qv_output
-    sgs_tend_hf->u_tend = u_tend_output
-    sgs_tend_hf->v_tend = v_tend_output
-    sgs_tend_hf->th_tend = th_tend_output
-    sgs_tend_hf->qv_tend = qv_tend_output
-    qc_hf->qc = qc_output
+        ; interpolation of variables on full levels or half levels
+        do level = 0,nz-1
+            h = intrp_h(level)  ; use intrp_h or intrp_hh for different variables as mentioned before
+            u_h = wrf_user_intrp3d(u,z,"h",h,0.,False)
+            v_h = wrf_user_intrp3d(v,z,"h",h,0.,False)
+            w_h = wrf_user_intrp3d(w,z,"h",h,0.,False)
+            u_output(level,:,:) = u_h(:,:)
+            v_output(level,:,:) = v_h(:,:)
+            w_output(level,:,:) = w_h(:,:)
+            u_tend_h = wrf_user_intrp3d(u_tend,z,"h",h,0.,False)
+            v_tend_h = wrf_user_intrp3d(v_tend,z,"h",h,0.,False)
+            th_tend_h = wrf_user_intrp3d(th_tend,z,"h",h,0.,False)
+            qv_tend_h = wrf_user_intrp3d(qv_tend,z,"h",h,0.,False)
+            u_tend_output(level,:,:) = u_tend_h(:,:)
+            v_tend_output(level,:,:) = v_tend_h(:,:)
+            th_tend_output(level,:,:) = th_tend_h(:,:)
+            qv_tend_output(level,:,:) = qv_tend_h(:,:)
+            th_h = wrf_user_intrp3d(th,z,"h",h,0.,False)
+            th_output(level,:,:) = th_h(:,:)
+            qv_h = wrf_user_intrp3d(qv,z,"h",h,0.,False)
+            qv_output(level,:,:) = qv_h(:,:)
+            qc_h = wrf_user_intrp3d(qc,z,"h",h,0.,False)
+            qc_output(level,:,:) = qc_h(:,:)
+        end do
 
-print("Task "+hid+":"+mid+"0:00 is finished")
+        ; write the interpolated file to the hard disk
+        u_hf->u = u_output
+        v_hf->v = v_output
+        w_hf->w = w_output
+        u_tend_hf->u_tend = u_tend_output
+        v_tend_hf->v_tend = v_tend_output
+        th_hf->th = th_output
+        qv_hf->qv = qv_output
+        sgs_tend_hf->u_tend = u_tend_output
+        sgs_tend_hf->v_tend = v_tend_output
+        sgs_tend_hf->th_tend = th_tend_output
+        sgs_tend_hf->qv_tend = qv_tend_output
+        qc_hf->qc = qc_output
+
+        print("Task "+hid+":"+mid+"0:00 is finished")
     
-    if (hid .eq. 23)
-        break
-    end if
+        if (hid .eq. 23)
+            break
+        end if
 
     end do
     
