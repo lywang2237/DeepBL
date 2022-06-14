@@ -48,49 +48,48 @@ channel_out = data_out_train.shape[2]
 # same as training on original data
 model = Sequential()
 
-model.add(Conv1D(filter_num, kernel_size, \
-          input_shape = (height, channel_in), strides = strides_num, padding = 'valid', \
-		  use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
-model.add(BatchNormalization())
-model.add(LeakyReLU(leaky_alpha))
-
-model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', \
+model.add(Conv1D(filter_num, kernel_size, input_shape = (height, channel_in), strides = strides_num, padding = 'valid', 
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
 
-model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', \
+model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', 
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
 
-model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', \
+model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same',
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
 
-model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', \
+model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same',
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
 
-model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', \
+model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same',
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
 
-model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', \
+model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same',
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
 
-model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same', \
+model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same',
+          use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
+model.add(BatchNormalization())
+model.add(LeakyReLU(leaky_alpha))
+
+model.add(Conv1D(filter_num, kernel_size, strides = strides_num, padding = 'same',
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
 
 model.add(ZeroPadding1D(padding_val))
-model.add(Conv1D(channel_out, kernel_size, strides = strides_num, padding = 'valid', \
+model.add(Conv1D(channel_out, kernel_size, strides = strides_num, padding = 'valid',
           use_bias = True, kernel_initializer=kernel_ini_style, bias_initializer=bias_ini_style))
 model.add(BatchNormalization())
 model.add(LeakyReLU(leaky_alpha))
@@ -100,7 +99,7 @@ model.compile(loss='mse', optimizer = 'rmsprop')
 # only the best model on validation data is saved
 save_best = ModelCheckpoint(model_full_path, verbose = 2, save_best_only = True)
 
-model.fit(data_in_train,data_out_train,batch_size=batch_size,epochs=epoch,verbose=2,\
-validation_data=(data_in_vali,data_out_vali),shuffle=True, callbacks = [save_best])
+model.fit(data_in_train,data_out_train,batch_size=batch_size,epochs=epoch,verbose=2, 
+	  validation_data=(data_in_vali,data_out_vali),shuffle=True, callbacks = [save_best])
 
 print('10l56c-complete model training!')
