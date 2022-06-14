@@ -31,9 +31,9 @@ train_vali_start = int((data_in.shape[0])*8/9)
 
 # calculate stds and avgs
 for h in range(output_dim):
-	turflux_avg_all[h] = np.mean(data_out[:train_vali_start,:,h])
-	turflux_std_all[h] = np.sqrt(np.mean(np.square(data_out[:train_vali_start,:,h] - turflux_avg_all[h])))
-	data_out[:,:,h] = (data_out[:,:,h]-turflux_avg_all[h])/turflux_std_all[h]
+    turflux_avg_all[h] = np.mean(data_out[:train_vali_start,:,h])
+    turflux_std_all[h] = np.sqrt(np.mean(np.square(data_out[:train_vali_start,:,h] - turflux_avg_all[h])))
+    data_out[:,:,h] = (data_out[:,:,h]-turflux_avg_all[h])/turflux_std_all[h]
 
 # save
 np.save(output_path+'data_in',data_in)
