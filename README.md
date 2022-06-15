@@ -23,4 +23,4 @@ In folder training_NN:
 3. FCNN_same_compute.py for the training of FC-NN-COMP
 4. FCNN_same_nodes.py for the training of FC-NN-NODE
 
-The output from gen_raw_data.py, old TC-LES and new TC-LES for test data evaluation of DeepBL and the trained model for 1D-CNN (DeepBL; on original data or nonlinearly transformed data) and FC-NNs are uploaded to Zenodo
+The output from gen_raw_data.py, old TC-LES and new TC-LES for test data evaluation of DeepBL and the trained model for 1D-CNN (DeepBL; on original data or nonlinearly transformed data) and FC-NNs are uploaded to Zenodo: https://zenodo.org/record/6641564
