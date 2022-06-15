@@ -4,7 +4,7 @@ codes for published work "Deep Learning Parameterization of Tropical Cyclone Bou
 In folder preprocess_of_LES:
 
 Scripts run in this order
-1. Use wrf_interp.ncl to interp the raw TC-LES data to the 14 specific levels in boundary layer (BL). This is a NCAR Command Language script file.
+1. Use wrf_interp.ncl to interpolate the raw TC-LES data to the 14 specific levels in boundary layer (BL). This is a NCAR Command Language script file.
 2. Use avg_resolved_var_flux.m to get resovled turbulent fluxes and resolved variables
 3. Use get_sfc_flux.py to get surface fluxes
 4. Use get_sgs_flux_and_add_together.m to get subgrid scale turbulent fluxes and add them to the resolved fluxes
